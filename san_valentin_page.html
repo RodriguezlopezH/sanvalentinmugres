@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Quieres ser mi San Valentín?</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #ffe6f2;
+        }
+        .container {
+            margin-top: 100px;
+        }
+        .botones {
+            margin-top: 20px;
+        }
+        .boton {
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+        #si {
+            background-color: #ff66b2;
+            color: white;
+        }
+        #no {
+            background-color: #cccccc;
+            color: black;
+            position: absolute;
+        }
+        .hidden {
+            display: none;
+        }
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
+        .flores {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: float 2s infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="pregunta">
+        <h1>Yesenia, ¿Quieres ser mi San Valentín? 💖</h1>
+        <div class="botones">
+            <button id="si" class="boton" onclick="mostrarFlores()">Sí</button>
+            <button id="no" class="boton">No</button>
+        </div>
+    </div>
+    <div id="mensaje" class="hidden">
+        <h2>¡Mugres, sabía que ibas a aceptar! 💜</h2>
+        <p>Prometo estar a tu lado siempre, amarte y quererte tal como eres. Nunca estarás sola. 💕</p>
+        <img src="https://i.imgur.com/dZsfXrV.png" alt="Flores moradas" class="flores">
+    </div>
+    <script>
+        const noBtn = document.getElementById("no");
+        let moving = false;
+        
+        noBtn.addEventListener("mouseover", function() {
+            if (!moving) {
+                const x = Math.random() * window.innerWidth - 100;
+                const y = Math.random() * window.innerHeight - 50;
+                noBtn.style.left = `${x}px`;
+                noBtn.style.top = `${y}px`;
+            }
+        });
+        
+        function mostrarFlores() {
+            document.getElementById("pregunta").classList.add("hidden");
+            document.getElementById("mensaje").classList.remove("hidden");
+        }
+    </script>
+</body>
+</html>
